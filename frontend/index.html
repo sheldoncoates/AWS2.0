@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SE4455 Assignment 2</title>
+    <link rel="stylesheet" type="text/css" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+</head>
+
+<body>
+    <div class="container">
+        <div class="login">
+            <h1 class="login-heading">
+                <strong>Welcome.</strong> Please login.</h1>
+            <input id="username" type="text" name="user" placeholder="Username" required="required" class="input-txt" />
+            <input id="password" type="password" name="password" placeholder="Password" required="required"
+                class="input-txt" />
+            <div class="login-footer">
+                <a href="#" class="lnk">
+                    <span class="icon icon--min">ಠ╭╮ಠ</span>
+                    I've forgotten something
+                </a>
+                <button class="btn btn--right" onclick="validateUser()">Sign in </button>
+            </div>
+            <h1 class="login-heading">Username is: admin</h1>
+            <h1 class="login-heading">Password is: admin</h1>
+            <h1 id="invalid">Invalid credentials</h1>
+        </div>
+    </div>
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>

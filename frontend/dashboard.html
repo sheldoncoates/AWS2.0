@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SE4455 Assignment 2</title>
+    <link rel="stylesheet" type="text/css" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+</head>
+
+<body>
+    <h1>Dashboard</h1>
+    <select id="vmType">
+        <option value="Basic">Basic</option>
+        <option value="Large">Large</option>
+        <option value="Ultra-Large">Ultra-Large</option>
+      </select>
+    <button onclick="createNewVM()">Create VM</button>
+    <hr />
+    <h2>Created VMs</h2>
+    <ul id="allVMs">
+        <!-- VMS Injected -->
+    </ul>
+    <hr />
+    <h2>Deleted VMs</h2>
+    <ul id="deletedVMs">
+        <!-- Injected -->
+    </ul>
+    
+
+
+    <script src="/scripts/dashboard.js"></script>
+</body>
+
+</html>
