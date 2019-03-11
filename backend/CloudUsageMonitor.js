@@ -110,13 +110,86 @@ router.get('/vm', (req, res) => {
  * Fetches all transactions pertaining to a VM
  * @return {[VMEvent]}
  */
-router.get('/vm/:vmId', (req, res) => {
-    VMEvent.find({ vmId })
-        .then(results => res.json(results))
+router.get('/vm/:vmId/:start/:stop/minutes', (req, res) => {
+    let vmId = req.params.vmId;
+    let start = req.params.start;
+    let stop = req.params.stop
+    let startDate = new Date(start);
+    let endDate = new Date(stop);
+
+    VMEvent.find({vmId: vmId, timestamp: { $gte: startDate, $lt: endDate }})
+        .sort({ timestamp: 1 })
+        .then(results => {
+            const INITIAL_STATE = {
+                minutes: 0,
+                lastDoc: null,
+            };
+            const usage = results.reduce((state, thisDoc, i) => {
+                let { lastDoc, minutes } = state;
+                if(lastDoc && lastDoc.isRunning && !thisDoc.isRunning) {
+                    minutes += getMinutes(thisDoc, lastDoc);
+                }/* else if(results.length - 1 == i && thisDoc.eventType == 'Start') { // if the vm is currently running
+                    const presentTimeDoc = {
+                        timestamp: new Date(), // we count usage up to now
+                    };
+                    minutes += getMinutes(presentTimeDoc, thisDoc);
+                };*/
+    
+                lastDoc = thisDoc;
+                return {lastDoc, minutes};
+            }, INITIAL_STATE);
+    
+            res.json({
+                minutes: moment.duration(usage.minutes, 'minutes').asMinutes(),
+            });
+        })
         .catch(error => res.status(400).json({
             message: 'Error getting vm.',
             error,
         }));
+    
+});
+
+/**
+ * Fetches all transactions pertaining to a VM
+ * @return {[VMEvent]}
+ */
+router.get('/vm/:vmId/:start/:stop/cost', (req, res) => {
+    let vmId = req.params.vmId;
+    let start = req.params.start;
+    let stop = req.params.stop
+    let startDate = new Date(start);
+    let endDate = new Date(stop);
+
+    VMEvent.find({vmId: vmId, timestamp: { $gte: startDate, $lt: endDate }})
+        .sort({ timestamp: 1 })
+        .lean()
+        .then(results => {
+            const INITIAL_STATE = {
+                cost: 0,
+                lastDoc: null,
+            };
+    
+            const usage = results.reduce((state, thisDoc, i) => {
+                const { lastDoc } = state;
+                if (lastDoc && lastDoc.isRunning) {
+                    const price = getPrice(lastDoc);
+                    const minutes = getMinutes(thisDoc, lastDoc);
+                    state.cost += (price * minutes);
+                };
+                state.lastDoc = thisDoc;
+                return state;
+            }, INITIAL_STATE);
+    
+            res.json({
+                cost: usage.cost.toPrecision(3),
+            });
+        })
+        .catch(error => res.status(400).json({
+            message: 'Error getting vm.',
+            error,
+        }));
+    
 });
 
 /**

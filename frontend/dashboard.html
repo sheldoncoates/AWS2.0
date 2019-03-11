@@ -9,30 +9,89 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js"
         integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
-    <h1>Dashboard</h1>
-    <select id="vmType">
-        <option value="Basic">Basic</option>
-        <option value="Large">Large</option>
-        <option value="Ultra-Large">Ultra-Large</option>
-      </select>
-    <button onclick="createNewVM()">Create VM</button>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <a class="navbar-brand" style='height:70px;color:azure' href="#">
+            <h1>Virtual Machines</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            </ul>
+        </div>
+    </nav>
+    <div style='padding:30px 0px 30px 0px;left:0px;'>
+        <div style="margin-left: 30px">
+            <h1>Dashboard</h1>
+            <select id="vmType" style='height:38px'>
+                <option value="Basic">Basic - 8 virtual processor cores, 16 GB of virtual RAM, 20 GB of
+                    storage space in the root file system - 5 cents/minute</option>
+                <option value="Large">Large - 32 virtual processor cores, 64 GB of virtual RAM, 20 GB of
+                    storage space in the root file system - 10 cents/minute </option>
+                <option value="Ultra-Large">Ultra-Large - 128 virtual processor cores, 512 GB of virtual RAM, 40
+                    GB of storage space in the root file system - 15 cents /minute</option>
+            </select>
+            <button class="btn btn-success" style="margin-left: 20px; display: inline-block"
+                onclick="createNewVM()">Create VM</button>
+        </div>
+
+        <hr />
+    </div>
+
+    <div class='container' style='margin-left:20px'>
+        <h2>Created VMs</h2>
+        <ul id="allVMs">
+            <!-- VMS Injected -->
+        </ul>
+        <hr />
+        <h2>Deleted VMs</h2>
+        <ul id="deletedVMs">
+            <!-- Injected -->
+        </ul>
+    </div>
     <hr />
-    <h2>Created VMs</h2>
-    <ul id="allVMs">
-        <!-- VMS Injected -->
-    </ul>
+    <div style='padding:30px 0px 30px 30px'>
+        <h2>Get Usage per VM with timestamp</h2>
+        Virtual Machine ID: <input type="number" name="id" id="id">
+        From: <input type="date" name="start" id="start">
+        To: <input type="date" name="end" id="end">
+        <button class="btn btn-info" onclick="getTotalVMUsageTimestamp()">Get VM Usage Timestamp</button>
+    </div>
     <hr />
-    <h2>Deleted VMs</h2>
-    <ul id="deletedVMs">
-        <!-- Injected -->
-    </ul>
-    
+    <div style='padding:30px 0px 30px 30px;'>
+        <h2>Get Cost per VM with timestamp</h2>
+        Virtual Machine ID: <input type="number" name="id" id="idcost">
+        From: <input type="date" name="start" id="startcost">
+        To: <input type="date" name="end" id="endcost">
+        <button class="btn btn-info" onclick="getTotalVMCostTimestamp()">Get VM Cost Timestamp</button>
+    </div>
+
+    <hr />
+    <div class='container' style='margin:30px 0px 30px;'>
+        <button class='btn btn-success' style="height: 60px; width: 400px;font-size: 30px; margin-right: 40px"
+            onclick="getTotalCost()">Get Total Usage</button>
+        <div style="display: inline-block; font-size: 30px; color:dimgray;" id="totalUsage">
+        </div>
+
+    </div>
 
 
     <script src="/scripts/dashboard.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

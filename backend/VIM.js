@@ -15,6 +15,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static('../frontend'));
 
-app.use('/api', require('./router'));
+app.use('/api', require('./CloudUsageMonitor'));
 
 app.listen(PORT, () => console.log(`app listening on port ${PORT}!`))
