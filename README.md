@@ -1,7 +1,6 @@
 <!-- PROJECT SHIELDS -->
 [![Build Status][build-shield]]()
 [![Contributors][contributors-shield]]()
-[![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
@@ -9,18 +8,11 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://sheldoncoates.github.io">
-    <img src="images/favicon.png" alt="Logo" width="80" height="80">
-  </a>
-
-  <h3 align="center">sheldoncoates.github.io</h3>
-
+  <h3 align="center">AWS 2.0</h3>
   <p align="center">
-    Personal/Project website hosted on GitHub Pages.
+    School project to demonstrate cloud computing platform capabilities.
     <br />
-    <a href="https://sheldoncoates.github.io/">View Demo</a>
-    ·
-    <a href="https://github.com/sheldoncoates/sheldoncoates.github.io/issues">Report Bug</a>
+    <a href="https://github.com/sheldoncoates/AWS2.0/issues">Report Bug</a>
    </p>
 </p>
 
@@ -31,9 +23,7 @@
 
 * [About the Project](#about-the-project)
   * [Built With](#built-with)
-* [License](#license)
 * [Contact](#contact)
-* [Acknowledgements](#acknowledgements)
 
 
 <!-- ABOUT THE PROJECT -->
@@ -41,34 +31,21 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://sheldoncoates.github.io/)
 
-Every developer has their own portfolio -  here's mine.
+This project was created to demonstrate how cloud computing platforms work. 
 
 ### Built With
-Here is the tech I used to put together my portfolio.
+Here is the tech used to create this project.
 * [JavaScript](https://www.javascript.com/)
 * [JQuery](https://jquery.com)
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
+* [NodeJs](https://nodejs.org/en/)
+* [MongoDB](https://www.mongodb.com/)
+* [Azure](https://azure.microsoft.com/en-ca/free/search/?&OCID=AID719803_SEM_Ypu1k1V1&lnkd=Google_Azure_Brand&dclid=CjkKEQjw7YblBRDYr_eyvOi24vMBEiQAF7vJQSsJmprPTJsauNPir6jMlLMSeWDQ8sC-awttJxVlYyHw_wcB)
 
 
 <!-- CONTACT -->
 ## Contact
 
 Sheldon Coates - [LinkedIn](https://www.linkedin.com/in/sheldoncoates/) - sjrcoates@gmail.com 
-
-  Project Link: [https://github.com/sheldoncoates/sheldoncoates.github.io](https://github.com/sheldoncoates/sheldon.github.io)
-
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [build-shield]: https://img.shields.io/badge/build-passing-brightgreen.svg?style=flat-square
@@ -77,4 +54,4 @@ Sheldon Coates - [LinkedIn](https://www.linkedin.com/in/sheldoncoates/) - sjrcoa
 [license-url]: https://choosealicense.com/licenses/mit
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/sheldoncoates/
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: aws.gif
